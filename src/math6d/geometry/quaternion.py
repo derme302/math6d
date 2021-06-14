@@ -25,7 +25,7 @@ class Quaternion(MsgConversion):
 
     def __init__(self, *args, **kwargs):
 
-        # Coefficients are stored (w, x, y, z,)
+        # Coefficients are stored (w, x, y, z)
         self.__coeffs = numpy.array([1, 0, 0, 0], dtype=numpy.float64)
 
         if len(args) == 0 and len(kwargs) == 0:
@@ -282,7 +282,7 @@ class Quaternion(MsgConversion):
 
     @classmethod
     def from_euler_intrinsic(cls, angles, ordering):
-        # type: () -> Quaternion
+        # type: (list, list) -> Quaternion
         qt = Quaternion()
         for angle, axis in zip(angles, ordering):
             qt *= Quaternion.from_axis_angle(axis.value, angle)
